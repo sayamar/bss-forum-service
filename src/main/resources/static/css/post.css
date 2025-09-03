@@ -1,0 +1,57 @@
+ body {
+            padding-top: 70px;
+            background-color: #f9f9f9;
+        }
+        .container-center {
+            max-width: 80%;
+            margin: 0 auto 40px;
+            background: white;
+            padding: 20px 30px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        table.post-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        table.post-table th, table.post-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        table.post-table th {
+            width: 150px;
+            white-space: nowrap;
+            background-color: #f1f1f1;
+        }
+        /* Comment section */
+        .comments-title {
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .comment {
+            border-bottom: 1px solid #ddd;
+            padding: 12px 0;
+        }
+        .comment:last-child {
+            border-bottom: none;
+        }
+        .comment-user {
+            font-weight: 600;
+            color: #333;
+        }
+        .comment-content {
+            margin-top: 6px;
+            white-space: pre-wrap; /* Preserve line breaks */
+        }
+        /* Add comment form */
+        .add-comment-form {
+            margin-bottom: 40px;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .btn-submit {
+            margin-top: 10px;
+        }
