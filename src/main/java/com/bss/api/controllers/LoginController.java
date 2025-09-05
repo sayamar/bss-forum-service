@@ -31,6 +31,12 @@ public class LoginController {
         model.addAttribute("userRequest", new UserRequest());
         return "login";
     }
+    @GetMapping("/home1")
+    public String showLoginForm1(Model model) {
+        model.addAttribute("userRequest", new UserRequest());
+        model.addAttribute("isAuthenticated", false);
+        return "home1";
+    }
 
     @PostMapping("/login")
     public String login(@ModelAttribute UserRequest userRequest, HttpSession session, Model model) {

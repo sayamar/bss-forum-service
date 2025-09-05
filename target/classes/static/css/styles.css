@@ -1,0 +1,132 @@
+body {
+    padding-top: 70px;
+}
+
+/* Left Sidebar */
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 220px;
+    background-color: #f8f9fa;
+    padding-top: 20px;
+    overflow-y: auto;
+    z-index: 999;
+}
+
+/* Right Sidebar */
+.right-sidebar {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    width: 220px;
+    height: 100vh;
+    background-color: #f8f9fa;
+    padding-top: 20px;
+    overflow-y: auto;
+    border-left: 1px solid #ddd;
+    z-index: 999;
+}
+
+/* Main Content */
+.content {
+    margin-left: 240px;
+    margin-right: 240px;
+    padding: 20px;
+}
+
+.navbar {
+    background-color: #90EE90 !important;
+}
+
+.profile-pic {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.card-body > div > div {
+    display: inline-flex;
+    gap: 1rem;
+    font-weight: 500;
+}
+
+.navbar-fujifilm-green {
+    background-color: #00923F !important;
+    border-color: #00923F !important;
+}
+
+.navbar-fujifilm-green .navbar-brand,
+.navbar-fujifilm-green .nav-link,
+.navbar-fujifilm-green .navbar-text {
+    color: white !important;
+}
+
+.navbar-fujifilm-green .nav-link:hover,
+.navbar-fujifilm-green .nav-link:focus {
+    color: #b0e57c !important;
+}
+
+/* Post Card Styling */
+.post-card {
+    width: 100%;
+    max-width: 1050px;
+    min-width: 280px;
+    height: 150px;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.post-card .card-body {
+    overflow: auto;
+}
+
+/* =============== RESPONSIVE BREAKPOINTS =============== */
+@media (max-width: 1400px) {
+    .sidebar,
+    .right-sidebar {
+        width: 160px;
+    }
+    .content {
+        margin-left: 170px;
+        margin-right: 170px;
+    }
+}
+
+@media (max-width: 992px) {
+    .sidebar,
+    .right-sidebar {
+        width: 60px;
+        font-size: 12px;
+        padding-top: 10px;
+    }
+    .content {
+        margin-left: 70px;
+        margin-right: 70px;
+        padding: 10px;
+    }
+    .post-card {
+        max-width: 100%;
+        min-width: 180px;
+        height: auto; /* Let them stretch vertically if needed */
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar,
+    .right-sidebar {
+        display: none;
+    }
+    .content {
+        margin: 0;
+        padding: 8px;
+    }
+    .post-card {
+        max-width: 100%;
+        min-width: 100%;
+        height: auto;
+    }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Example</title>
+<!--    <link rel="stylesheet" href="../static/css/header.css" />-->
+    <!-- Use Thymeleaf link to static CSS -->
+    <link rel="stylesheet" th:href="@{/css/header.css}" />
+</head>
+<body>
+<nav class="navbar">
+    <!-- Left side: Logo + Navigation -->
+    <div class="nav-wrapper">
+        <div class="logo">
+            <img
+                    src="https://global.fujifilm.com/themes/custom/fujifilm_com_g2/common/img/fujifilm_corporate_logo.svg"
+                    alt="Fujifilm"
+            />
+        </div>
+
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a th:href="@{/}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/hubs}" class="nav-link">Tech Community</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link">
+                    Products <span class="arrow">▾</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/m365}" class="dropdown-link">Microsoft 365</a></li>
+                    <li><a th:href="@{/windows}" class="dropdown-link">Windows</a></li>
+                    <li><a th:href="@{/copilot}" class="dropdown-link">Microsoft 365 Copilot</a></li>
+                    <li><a th:href="@{/teams}" class="dropdown-link">Microsoft Teams</a></li>
+                    <li><a th:href="@{/security}" class="dropdown-link">Microsoft Security</a></li>
+                    <li><a th:href="@{/azure}" class="dropdown-link">Azure</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item" th:if="${isAuthenticated}">
+                <a th:href="@{/blogs}" class="nav-link">Blogs</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Right side: Auth Buttons -->
+    <div class="auth-buttons">
+        <!-- Show Register + Sign in if not authenticated -->
+        <a th:if="${!isAuthenticated}" th:href="@{/register}" class="btn">Register</a>
+        <a th:if="${!isAuthenticated}" th:href="@{/signin}" class="btn">Sign in</a>
+
+        <!-- Show Logout if authenticated -->
+        <form th:if="${isAuthenticated}" th:action="@{/logout}" method="post">
+            <button type="submit" class="btn">Logout</button>
+        </form>
+    </div>
+</nav>
+</body>
+</html>
