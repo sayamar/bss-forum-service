@@ -1,1 +1,9 @@
+com\bss\api\controller\PostController.class
+com\bss\api\controllers\LikeController.class
+com\bss\api\controllers\CommentController.class
+com\bss\api\controllers\HomeController.class
 com\bss\api\controller\HomeController.class
+com\bss\api\controllers\UserController.class
+com\bss\api\controllers\LoginController.class
+com\bss\api\controllers\PostController.class
+com\bss\util\Constants.class
