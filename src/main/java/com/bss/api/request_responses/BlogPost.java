@@ -16,4 +16,8 @@ public class BlogPost {
 
 
     private String summary;
+
+    private String author;
+
+    private String imageId;
 }

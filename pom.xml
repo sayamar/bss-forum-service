@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.4</version>
+		<version>3.5.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.bss</groupId>
@@ -61,14 +61,14 @@
 			<optional>true</optional>
 		</dependency>
 
-<!--		&lt;!&ndash; Swagger OPEN API &ndash;&gt;-->
-<!--		<dependency>-->
-<!--			<groupId>org.springdoc</groupId>-->
-<!--			&lt;!&ndash;			<artifactId>springdoc-openapi-ui</artifactId>&ndash;&gt;-->
-<!--			&lt;!&ndash;			<artifactId>springdoc-openapi-starter-webflux-ui</artifactId>&ndash;&gt;-->
-<!--			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>-->
-<!--			<version>${openapi.version}</version>-->
-<!--		</dependency>-->
+		<!-- Swagger OPEN API -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<!--			<artifactId>springdoc-openapi-ui</artifactId>-->
+			<!--			<artifactId>springdoc-openapi-starter-webflux-ui</artifactId>-->
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>${openapi.version}</version>
+		</dependency>
 
 
 		<dependency>

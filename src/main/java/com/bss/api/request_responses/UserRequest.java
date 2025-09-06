@@ -11,5 +11,6 @@ public class UserRequest {
     private String password;   // Accept plain password here, hash it later when mapping to Entity
     private String fullName;
     private String email;
+    private String userId;
 
 }
