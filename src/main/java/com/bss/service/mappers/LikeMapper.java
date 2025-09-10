@@ -3,7 +3,7 @@ package com.bss.service.mappers;
 
 
 
-import com.bss.api.request_responses.LikeRequest;
+import com.bss.api.request_responses.LikeDTO;
 import com.bss.data.entities.Comment;
 import com.bss.data.entities.Like;
 import com.bss.data.entities.Post;
@@ -18,7 +18,7 @@ public class LikeMapper {
      * Requires User entity and either Post or Comment entity (depending on which is liked).
      * Pass null for post/comment if not applicable.
      */
-    public Like toEntity(LikeRequest likeRequest, User user, Post post, Comment comment) {
+    public Like toEntity(LikeDTO likeRequest, User user, Post post, Comment comment) {
         if (likeRequest == null || user == null) {
             return null;
         }
@@ -34,15 +34,15 @@ public class LikeMapper {
     /**
      * Converts Like entity to LikeRequest DTO.
      */
-    public LikeRequest toRequest(Like like) {
+    public LikeDTO toRequest(Like like) {
         if (like == null) {
             return null;
         }
 
-        LikeRequest likeRequest = new LikeRequest();
+        LikeDTO likeRequest = new LikeDTO();
         likeRequest.setUserId(like.getUser() != null ? like.getUser().getUserId() : null);
         likeRequest.setPostId(like.getPost() != null ? like.getPost().getPostId() : null);
-        likeRequest.setCommentId(like.getComment() != null ? like.getComment().getCommentId() : null);
+    //    likeRequest.setCommentId(like.getComment() != null ? like.getComment().getCommentId() : null);
 
         return likeRequest;
     }

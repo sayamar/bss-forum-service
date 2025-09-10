@@ -1,13 +1,10 @@
 package com.bss.data.entities;
 
-
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table(name = "Comments")
@@ -36,10 +33,4 @@ public class Comment {
 
     @Column(nullable = false)
     private LocalDateTime updatedAt = LocalDateTime.now();
-
-    @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Like> likes;
-
-    // getters and setters
-    // constructor(s)
 }

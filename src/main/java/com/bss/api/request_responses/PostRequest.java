@@ -7,13 +7,13 @@ import lombok.Setter;
 @Setter
 public class PostRequest {
 
-    private Long userId;  // ID of the User authoring the post
+    private String userId;  // ID of the User authoring the post
 
     private String title;
 
     private String content;
 
-    private Long categoryId;
+    private String categoryId;
 
 
 }

@@ -1,6 +1,7 @@
 package com.bss.api.controller;
 
 import com.bss.api.request_responses.CategoryRequest;
+import com.bss.api.request_responses.PostDTO;
 import com.bss.api.request_responses.PostRequest;
 import com.bss.data.entities.Category;
 import com.bss.data.entities.Post;
@@ -8,6 +9,7 @@ import com.bss.data.entities.User;
 import com.bss.data.repos.CategoryRepository;
 import com.bss.data.repos.PostRepository;
 import com.bss.data.repos.UserRepository;
+import com.bss.service.PostService;
 import com.bss.util.Constants;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
@@ -25,20 +27,23 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @RequestMapping("/api/v1")
 @CrossOrigin(origins = "http://localhost:3000")
+
 public class PostController {
 
     private final UserRepository userRepository;
     private final CategoryRepository categoryRepository;
     private final PostRepository postRepository;
+    private final PostService postService;
 
     @PostMapping("/posts")
-    public ResponseEntity<List<Post>> create(@RequestBody PostRequest postRequest) {
+    public ResponseEntity<List<PostDTO>> create(@RequestBody PostRequest postRequest) {
         // Retrieve user from session (assuming username saved in session)
-        User user = userRepository.findById(postRequest.getUserId())
+        User user = userRepository.findById(Long.valueOf(postRequest.getUserId()))
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        Category category = categoryRepository.findById(postRequest.getCategoryId())
+        Category category = categoryRepository.findById(Long.valueOf(postRequest.getCategoryId()))
                 .orElseThrow(() -> new RuntimeException("Category not found"));
+
 
         Post post = new Post();
         post.setTitle(postRequest.getTitle());
@@ -46,11 +51,11 @@ public class PostController {
         post.setCategory(category);
         post.setUser(user);
         post.setCreatedAt(LocalDateTime.now());
-        post.setStatus(Constants.Open);  // default status
+        post.setStatus(Constants.Open);
 
         postRepository.save(post);
 
-        return new ResponseEntity<>(postRepository.findAll().stream().toList(), HttpStatus.OK);
+        return this.getAllPosts();
     }
     @GetMapping("listCategories")
     public ResponseEntity<List<CategoryRequest>> getCategories() {
@@ -64,4 +69,24 @@ public class PostController {
         }
         return new ResponseEntity<>(categoryRequestList, HttpStatus.OK);
     }
+
+    @GetMapping("/posts")
+    public ResponseEntity<List<PostDTO>> getAllPosts() {
+        return ResponseEntity.ok(postService.findAllWithUserAndCategory());
+    }
+
+//    @GetMapping("/posts")
+//    public ResponseEntity<List<Post>> getPosts() {
+//        log.info("Getting the posts ");
+//        List<Post> posts = null;
+//        List<Category> categories = categoryRepository.findAllWithPostsAndUsers();
+//        if (categories != null && !categories.isEmpty()) {
+//             posts = categories.stream()
+//                    .flatMap(category -> category.getPosts().stream())
+//                    .collect(Collectors.toList());
+//
+//            return new ResponseEntity<>(posts, HttpStatus.OK);
+//        }
+//        return new ResponseEntity<>(posts, HttpStatus.OK);
+//    }
 }

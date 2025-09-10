@@ -1,6 +1,6 @@
 package com.bss.service.mappers;
 
-import com.bss.api.request_responses.UserRequest;
+import com.bss.api.request_responses.UserDTO;
 import com.bss.data.entities.User;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +14,7 @@ public class UserMapper {
 //        this.passwordEncoder = passwordEncoder;
 //    }
 
-    public User toEntity(UserRequest request) {
+    public User toEntity(UserDTO request) {
         if (request == null) {
             return null;
         }
@@ -27,15 +27,16 @@ public class UserMapper {
         return user;
     }
 
-    public UserRequest toRequest(User user) {
+    public UserDTO toRequest(User user) {
         if (user == null) {
-            return null;
+            return new UserDTO();
         }
-        UserRequest request = new UserRequest();
+        UserDTO request = new UserDTO();
         request.setUsername(user.getUsername());
         // Usually you don’t send password back in responses, omit it here
         request.setFullName(user.getFullName());
         request.setEmail(user.getEmail());
+        request.setUserId(String.valueOf(user.getUserId()));
         return request;
     }
 }

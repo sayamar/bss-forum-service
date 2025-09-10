@@ -1,11 +1,14 @@
 package com.bss.service.mappers;
 
 
+import com.bss.api.request_responses.CommentDTO;
 import com.bss.api.request_responses.CommentRequest;
 import com.bss.data.entities.Comment;
 import com.bss.data.entities.Post;
 import com.bss.data.entities.User;
 import org.springframework.stereotype.Component;
+
+import java.time.format.DateTimeFormatter;
 
 @Component
 public class CommentMapper {
@@ -31,17 +34,25 @@ public class CommentMapper {
      * Converts Comment entity to CommentRequest DTO.
      * Useful if you want to send comment info in the same format.
      */
-    public CommentRequest toRequest(Comment comment) {
+    public CommentDTO toDTO(Comment comment) {
         if (comment == null) {
             return null;
         }
 
-        CommentRequest commentRequest = new CommentRequest();
-        commentRequest.setPostId(comment.getPost() != null ? comment.getPost().getPostId() : null);
-        commentRequest.setUserId(comment.getUser() != null ? comment.getUser().getUserId() : null);
-        commentRequest.setContent(comment.getContent());
+        CommentDTO commentDTO = new CommentDTO();
+        commentDTO.setPostId(comment.getPost() != null ? comment.getPost().getPostId() : null);
+        commentDTO.setUserId(comment.getUser() != null ? comment.getUser().getUserId() : null);
+        commentDTO.setComment(comment.getContent());
+        if (comment.getUser() != null) {
+            commentDTO.setUsername(comment.getUser().getUsername());
+        }
+        if(comment.getCreatedAt() != null) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            commentDTO.setCreatedAt(comment.getCreatedAt().format(formatter));
+        }
 
-        return commentRequest;
+
+        return commentDTO;
     }
 }
 
