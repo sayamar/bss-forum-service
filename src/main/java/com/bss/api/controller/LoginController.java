@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @AllArgsConstructor
 @RequestMapping("/api/v1")
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://bss-tech.ap01.fujifilm-intra.com")
 public class LoginController {
 
     private final UserRepository userRepository;

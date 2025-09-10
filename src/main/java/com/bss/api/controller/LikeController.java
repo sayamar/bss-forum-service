@@ -19,7 +19,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/likes")
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://bss-tech.ap01.fujifilm-intra.com")
 @Slf4j
 public class LikeController {
 

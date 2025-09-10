@@ -3,7 +3,11 @@ bin-debug/
 bin-release/
 [Oo]bj/
 [Bb]in/
+# IntelliJ IDEA
+.idea/
 
+# Maven build
+target/
 # Other files and folders
 .settings/
 

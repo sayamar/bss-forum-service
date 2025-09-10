@@ -25,7 +25,8 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/v1/comments")
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://bss-tech.ap01.fujifilm-intra.com")
 @Slf4j
 public class CommentController {
 
