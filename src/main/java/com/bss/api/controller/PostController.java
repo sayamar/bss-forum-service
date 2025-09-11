@@ -25,6 +25,7 @@ import java.util.stream.Collectors;
 @RestController
 @Slf4j
 @AllArgsConstructor
+
 @RequestMapping("/api/v1")
 //@CrossOrigin(origins = "http://localhost:3000")
 @CrossOrigin(origins = "http://bss-tech.ap01.fujifilm-intra.com")
@@ -57,13 +58,13 @@ public class PostController {
 
         return this.getAllPosts();
     }
-    @GetMapping("listCategories")
+    @GetMapping("categories")
     public ResponseEntity<List<CategoryRequest>> getCategories() {
         List<CategoryRequest> categoryRequestList = null;
         List<Category> categorList = categoryRepository.findAll();
         if(categorList != null && !categorList.isEmpty()) {
              categoryRequestList = categorList.stream()
-                    .map(cat -> new CategoryRequest(String.valueOf(cat.getCategoryId()), cat.getName()))
+                    .map(cat -> new CategoryRequest( cat.getName(),String.valueOf(cat.getCategoryId())))
                     .collect(Collectors.toList());
             return new ResponseEntity<>(categoryRequestList, HttpStatus.OK);
         }
